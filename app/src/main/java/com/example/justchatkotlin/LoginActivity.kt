@@ -21,27 +21,7 @@ class LoginActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         button_login.setOnClickListener {
-            val mailLogin = mail_login.text.toString()
-            val passwordLogin = password_login.text.toString()
-
-            Log.d("LoginActivity", "email is $mailLogin")
-            Log.d("LoginActivity", "name is $passwordLogin")
-
-            auth.signInWithEmailAndPassword(mailLogin, passwordLogin)
-                .addOnCompleteListener(this) {task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d("Login", "signInWithEmail:success")
-                    val user = auth.currentUser
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w("Login", "signInWithEmail:failure", task.exception)
-                }
-                }
-                .addOnFailureListener(this) {task ->
-                    Toast.makeText(baseContext, "${task.message}",
-                        Toast.LENGTH_SHORT).show()
-                }
+            performLogin()
         }
 
         need_an_account_textView.setOnClickListener {
@@ -50,5 +30,34 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun performLogin() {
+        val mailLogin = mail_login.text.toString()
+        val passwordLogin = password_login.text.toString()
+
+        Log.d("LoginActivity", "email is $mailLogin")
+        Log.d("LoginActivity", "name is $passwordLogin")
+
+        if (mailLogin.isEmpty() || passwordLogin.isEmpty()) {
+            Toast.makeText(this, "Please enter data into all fields.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        auth.signInWithEmailAndPassword(mailLogin, passwordLogin)
+            .addOnCompleteListener(this) {task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d("Login", "signInWithEmail:success")
+                    val user = auth.currentUser
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w("Login", "signInWithEmail:failure", task.exception)
+                }
+            }
+            .addOnFailureListener(this) {task ->
+                Toast.makeText(baseContext, "${task.message}",
+                    Toast.LENGTH_SHORT).show()
+            }
     }
 }
