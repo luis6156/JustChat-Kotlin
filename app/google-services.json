@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "784776384405",
+    "project_id": "justchatkotlin",
+    "storage_bucket": "justchatkotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784776384405:android:db506f2e6f6300caacf09c",
+        "android_client_info": {
+          "package_name": "com.example.justchatkotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784776384405-ihd3b5ec8ah4p4r0k0t7fk87gvks4ubq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASSQB15ArW3fK9YoezVpemDTUmPyqRWGQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784776384405-ihd3b5ec8ah4p4r0k0t7fk87gvks4ubq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
